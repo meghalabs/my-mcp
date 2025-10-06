@@ -1,30 +1,35 @@
-# 🧮 Add MCP Server
+# 🧮🌦️ MCP Servers — Add & Weather
 
-A simple **Model Context Protocol (MCP)** server that demonstrates how to extend an AI assistant’s capabilities by giving it a new **tool** — in this case, a tool that adds two numbers together.
+This repository contains two beginner-friendly **Model Context Protocol (MCP)** servers —  
+one that **adds two numbers** and another that **fetches live weather data** using the [Open-Meteo API](https://open-meteo.com/).
 
-This project is part of the **Complete Intro to MCP** learning series and serves as your very first working MCP server example.
+These are the first two projects in the **Complete Intro to MCP** learning series, designed to help you understand how to build and connect local MCP servers to AI clients such as **Claude Desktop**, **Tome**, or **Cursor**.
 
 ---
 
 ## 🚀 Overview
 
-The **Add MCP Server** is a minimal Node.js-based MCP server that exposes one tool called `add`.  
-This tool accepts two numbers (`a` and `b`) and returns their sum.
+| Server | Description |
+|---------|--------------|
+| **Add MCP Server** | A minimal MCP server that provides a single tool called `add`, which sums two numbers. |
+| **Weather MCP Server** | A practical MCP server that fetches real-time weather data (temperature, humidity, wind, etc.) for any given coordinates. |
 
-This is the “Hello World” of MCP servers — showing how to:
-- Initialize an MCP server.
-- Register tools using the `@modelcontextprotocol/sdk`.
-- Communicate via the **stdio transport**.
-- Test the server manually or through an MCP client like **Claude Desktop** or **Tome**.
+Both servers demonstrate the same fundamental MCP concepts:
+- Initializing an MCP server
+- Registering **tools** using the `@modelcontextprotocol/sdk`
+- Validating input schemas with **Zod**
+- Communicating through the **stdio transport**
+- Integrating MCP servers with **Claude Desktop**
 
 ---
 
 ## 🧰 Tech Stack
 
 - **Node.js** ≥ 22  
-- **@modelcontextprotocol/sdk** – core MCP library  
-- **zod** – for input validation  
-- **Stdio Transport** – for local communication between client and server  
+- **@modelcontextprotocol/sdk** – Core SDK for building MCP servers  
+- **zod** – Input schema validation  
+- **openmeteo** – Weather API client (used in the weather server)  
+- **Stdio Transport** – Standard I/O communication between MCP client and server  
 
 ---
 
@@ -32,12 +37,8 @@ This is the “Hello World” of MCP servers — showing how to:
 
 ```bash
 # Clone this repository
-git clone https://github.com/your-username/add-mcp-server.git
-cd add-mcp-server
+git clone https://github.com/your-username/mcp-servers.git
+cd mcp-servers
 
 # Initialize dependencies
-npm install
-
-# Or if you started from scratch:
-npm init -y
-npm install @modelcontextprotocol/sdk zod
+npm install @modelcontextprotocol/sdk zod openmeteo
